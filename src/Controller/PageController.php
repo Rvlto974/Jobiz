@@ -5,22 +5,26 @@
 
 
 
+
 namespace App\Controller;
 
 class PageController
 {
     public function home(): void
     {
-        $this->render("page/home");
+        $greeting = "hello";
+        $name = "John";
+
+        $this->render("page/home", [
+            "greetings" => $greeting, 
+            "name" => $name
+        ]);
     }
 
-    public function about(): void
+    protected function render(string $path, array $params = []): void
     {
-        $this->render("page/about");
-    }
-
-    protected function render(string $path): void
-    {
+        extract($params); // Essentiel pour rendre les variables disponibles
+        
         $filepath = APP_ROOT . "/templates/$path.php";
 
         if (file_exists($filepath)) {
