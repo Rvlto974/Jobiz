@@ -21,6 +21,10 @@ class PageController
         ]);
     }
 
+    public function about() : void
+    {
+        $this->render("page/about");
+    }
     protected function render(string $path, array $params = []): void
     {
         extract($params); // Essentiel pour rendre les variables disponibles
