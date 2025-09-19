@@ -8,7 +8,7 @@
 
 namespace App\Controller;
 
-class PageController
+class PageController extends Controller
 {
     public function home(): void
     {
@@ -25,16 +25,8 @@ class PageController
     {
         $this->render("page/about");
     }
-    protected function render(string $path, array $params = []): void
-    {
-        extract($params); // Essentiel pour rendre les variables disponibles
-        
-        $filepath = APP_ROOT . "/templates/$path.php";
+    
+    
 
-        if (file_exists($filepath)) {
-            require_once $filepath;
-        } else {
-            echo "Le fichier $filepath n'existe pas";
-        }
-    }
+
 }
